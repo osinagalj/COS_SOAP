@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.isistan.edu.ar/springsoap/gen"
+           targetNamespace="http://www.isistan.edu.ar/springsoap/gen" elementFormDefault="qualified">
+ 
+    
+
+    <xs:complexType name="Cow">
+    	<xs:sequence>
+    		<xs:element name="id" type="xs:int"></xs:element>
+    		<xs:element name="weight" type="xs:decimal"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Herd">
+    	<xs:sequence>
+    		<xs:element name="cows" type="tns:Cow" maxOccurs="unbounded" minOccurs="1"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="getHerdResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="herd" type="tns:Herd"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getHerdRequest">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:integer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
