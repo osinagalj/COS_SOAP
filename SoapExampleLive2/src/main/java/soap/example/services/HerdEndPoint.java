@@ -39,7 +39,7 @@ public class HerdEndPoint {
 		
 		
 		if (herd != null) {
-			Herd herd_io = new Herd();
+			Herd herd_io = new Herd(); //herd in out
 			
 			List<Cow> cows = new ArrayList<>();
 			for (CowModel cow : herd.getCows()) {
