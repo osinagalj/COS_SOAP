@@ -18,6 +18,11 @@ import soap.example.model.CowModel;
 import soap.example.model.HerdModel;
 import soap.example.repositories.HerdRepository;
 
+
+/*What do you think my methods are going to call me?
+		 *
+		 * You are going to define how you think my methods are going to be called.
+ * */
 @Endpoint
 public class HerdEndPoint {
 
@@ -25,15 +30,20 @@ public class HerdEndPoint {
 
 	private HerdRepository herdRepository;
 	
+	
+	//it automatically creates a herd repository and passes it to me as a parameter here
 	@Autowired 
 	public HerdEndPoint(HerdRepository herdRepository) {
 		this.herdRepository = herdRepository;
 	}
 	
+	
+	//How are you going to implement what we want you to implement?
 	@PayloadRoot(namespace =  NAMESPACE_URI, localPart = "getHerdRequest")
 	@ResponsePayload
 	public GetHerdResponse getHerd(@RequestPayload GetHerdRequest request) {
 		long id = request.getId().longValue();
+		
 		HerdModel herd = herdRepository.findHerd(id);
 		GetHerdResponse response = new GetHerdResponse();
 		
@@ -55,9 +65,8 @@ public class HerdEndPoint {
 		}
 		
 		
-		return response;
-		
-		
+		return response; //Si el response es null habria que devolver expecion dependiendo el lenguaje, si es para java o phyton etc
 	}
+	
 	
 }

@@ -39,8 +39,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "id"
 })
-@XmlRootElement(name = "getHerdRequest")
-public class GetHerdRequest {
+@XmlRootElement(name = "getCowRequest")
+public class GetCowRequest {
 
     @XmlElement(required = true)
     protected BigInteger id;

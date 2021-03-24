@@ -1,0 +1,4 @@
+	public void setCows(List<Cow> cows2) {
+		this.cows = cows2;
+		
+	}

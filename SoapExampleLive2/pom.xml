@@ -48,27 +48,28 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.codehaus.mojo</groupId> -->
-<!-- 				<artifactId>jaxb2-maven-plugin</artifactId> -->
-<!-- 				<version>2.3.1</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>xjc</id> -->
-<!-- 						<goals> -->
-<!-- 							<goal>xjc</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 				<configuration> -->
-<!-- 					<sources> -->
-<!-- 						<source>src/main/resources/cows.xsd</source> -->
-<!-- 					</sources> -->
-<!-- 					<outputDirectory>${project.basedir}/src/main/java</outputDirectory> -->
-<!-- 					<clearOutputDir>false</clearOutputDir> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>jaxb2-maven-plugin</artifactId>
+					<version>2.3.1</version>
+					<executions>
+						<execution>
+							<id>xjc</id>
+							<goals>
+								<goal>xjc</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<sources>
+							<source>src/main/resources/cows.xsd</source>
+						</sources>
+						<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+						<clearOutputDir>false</clearOutputDir>
+					</configuration>
+				</plugin>
 		</plugins>
 	</build>
 
 </project>
+

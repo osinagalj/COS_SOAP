@@ -8,7 +8,6 @@
 
 package ar.edu.isistan.springsoap.gen;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -26,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
+ *         &lt;element name="animal" type="{http://www.isistan.edu.ar/springsoap/gen}Cow"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id"
+    "animal"
 })
-@XmlRootElement(name = "getHerdRequest")
-public class GetHerdRequest {
+@XmlRootElement(name = "postAnimalRequest")
+public class PostAnimalRequest {
 
     @XmlElement(required = true)
-    protected BigInteger id;
+    protected Cow animal;
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Obtiene el valor de la propiedad animal.
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link Cow }
      *     
      */
-    public BigInteger getId() {
-        return id;
+    public Cow getAnimal() {
+        return animal;
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Define el valor de la propiedad animal.
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link Cow }
      *     
      */
-    public void setId(BigInteger value) {
-        this.id = value;
+    public void setAnimal(Cow value) {
+        this.animal = value;
     }
 
 }

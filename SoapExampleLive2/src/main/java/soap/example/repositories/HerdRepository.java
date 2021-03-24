@@ -20,9 +20,14 @@ public class HerdRepository {
 	public void initData() {
 		
 		CowModel cow = new CowModel(100f);
+		CowModel cow2 = new CowModel(100f);
 		HerdModel herd = new HerdModel();
+		
 		herd.addCow(cow);
+		herd.addCow(cow2);
+		
 		herds.put(herd.getId(), herd);
+
 		
 	}
 	
