@@ -8,25 +8,26 @@
 
 package ar.edu.isistan.springsoap.gen;
 
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para AnimalAlert complex type.
+ * <p>Clase Java para anonymous complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="AnimalAlert"&gt;
+ * &lt;complexType&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *         &lt;element name="animal_id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *         &lt;element name="bcs_threshold" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
+ *         &lt;element name="location" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,65 +37,64 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AnimalAlert", propOrder = {
+@XmlType(name = "", propOrder = {
     "id",
-    "animalId",
-    "bcsThreshold"
+    "location"
 })
-public class AnimalAlert {
+@XmlRootElement(name = "postHerdRequest")
+public class PostHerdRequest {
 
-    protected int id;
-    @XmlElement(name = "animal_id")
-    protected int animalId;
-    @XmlElement(name = "bcs_threshold")
-    protected int bcsThreshold;
+    @XmlElement(required = true)
+    protected BigInteger id;
+    @XmlElement(required = true)
+    protected String location;
 
     /**
      * Obtiene el valor de la propiedad id.
      * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
      */
-    public int getId() {
+    public BigInteger getId() {
         return id;
     }
 
     /**
      * Define el valor de la propiedad id.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
      */
-    public void setId(int value) {
+    public void setId(BigInteger value) {
         this.id = value;
     }
 
     /**
-     * Obtiene el valor de la propiedad animalId.
+     * Obtiene el valor de la propiedad location.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public int getAnimalId() {
-        return animalId;
+    public String getLocation() {
+        return location;
     }
 
     /**
-     * Define el valor de la propiedad animalId.
+     * Define el valor de la propiedad location.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setAnimalId(int value) {
-        this.animalId = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad bcsThreshold.
-     * 
-     */
-    public int getBcsThreshold() {
-        return bcsThreshold;
-    }
-
-    /**
-     * Define el valor de la propiedad bcsThreshold.
-     * 
-     */
-    public void setBcsThreshold(int value) {
-        this.bcsThreshold = value;
+    public void setLocation(String value) {
+        this.location = value;
     }
 
 }

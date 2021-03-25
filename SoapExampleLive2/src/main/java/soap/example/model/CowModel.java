@@ -18,7 +18,26 @@ public class CowModel {
 	private XMLGregorianCalendar born_date;
 	private XMLGregorianCalendar lastDueDate;
 	private int numberOfDeliveries;
-
+	
+	public CowModel() {}
+	
+	public CowModel(int id,float weigth2) {
+		this.id = id;
+		this.weight = weigth2;
+		this.electronicId = 1;
+		this.numberOfDeliveries = 2;
+		
+		final GregorianCalendar now = new GregorianCalendar();
+		// in case you need to set the date with a given java.util.Date instance
+		// now.setTime(date);
+		try {
+			this.born_date =  DatatypeFactory.newInstance().newXMLGregorianCalendar(now);
+			this.lastDueDate =  this.born_date;
+		} catch (DatatypeConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public CowModel(float weight) {
 		this.id = cowIndex++;
 		this.weight = weight;

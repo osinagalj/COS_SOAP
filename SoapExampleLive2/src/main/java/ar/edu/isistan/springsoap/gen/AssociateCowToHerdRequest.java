@@ -26,7 +26,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
+ *         &lt;element name="id_herd" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
+ *         &lt;element name="id_cow" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,36 +38,63 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id"
+    "idHerd",
+    "idCow"
 })
-@XmlRootElement(name = "getHerdRequest")
-public class GetHerdRequest {
+@XmlRootElement(name = "associateCowToHerdRequest")
+public class AssociateCowToHerdRequest {
 
-    @XmlElement(required = true)
-    protected BigInteger id;
+    @XmlElement(name = "id_herd", required = true)
+    protected BigInteger idHerd;
+    @XmlElement(name = "id_cow", required = true)
+    protected BigInteger idCow;
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Obtiene el valor de la propiedad idHerd.
      * 
      * @return
      *     possible object is
      *     {@link BigInteger }
      *     
      */
-    public BigInteger getId() {
-        return id;
+    public BigInteger getIdHerd() {
+        return idHerd;
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Define el valor de la propiedad idHerd.
      * 
      * @param value
      *     allowed object is
      *     {@link BigInteger }
      *     
      */
-    public void setId(BigInteger value) {
-        this.id = value;
+    public void setIdHerd(BigInteger value) {
+        this.idHerd = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad idCow.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getIdCow() {
+        return idCow;
+    }
+
+    /**
+     * Define el valor de la propiedad idCow.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setIdCow(BigInteger value) {
+        this.idCow = value;
     }
 
 }

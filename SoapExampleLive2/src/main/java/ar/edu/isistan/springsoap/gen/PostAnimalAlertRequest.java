@@ -26,7 +26,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
+ *         &lt;element name="id_animal" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
+ *         &lt;element name="bcs_threshold" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,36 +38,63 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "id"
+    "idAnimal",
+    "bcsThreshold"
 })
-@XmlRootElement(name = "getHerdRequest")
-public class GetHerdRequest {
+@XmlRootElement(name = "postAnimalAlertRequest")
+public class PostAnimalAlertRequest {
 
-    @XmlElement(required = true)
-    protected BigInteger id;
+    @XmlElement(name = "id_animal", required = true)
+    protected BigInteger idAnimal;
+    @XmlElement(name = "bcs_threshold", required = true)
+    protected BigInteger bcsThreshold;
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Obtiene el valor de la propiedad idAnimal.
      * 
      * @return
      *     possible object is
      *     {@link BigInteger }
      *     
      */
-    public BigInteger getId() {
-        return id;
+    public BigInteger getIdAnimal() {
+        return idAnimal;
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Define el valor de la propiedad idAnimal.
      * 
      * @param value
      *     allowed object is
      *     {@link BigInteger }
      *     
      */
-    public void setId(BigInteger value) {
-        this.id = value;
+    public void setIdAnimal(BigInteger value) {
+        this.idAnimal = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad bcsThreshold.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
+     */
+    public BigInteger getBcsThreshold() {
+        return bcsThreshold;
+    }
+
+    /**
+     * Define el valor de la propiedad bcsThreshold.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
+     */
+    public void setBcsThreshold(BigInteger value) {
+        this.bcsThreshold = value;
     }
 
 }

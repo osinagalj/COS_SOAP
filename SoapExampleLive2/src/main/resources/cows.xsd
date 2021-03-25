@@ -99,13 +99,100 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+       
     
-        <xs:element name="postAnimalResponse">     
+    <xs:element name="postHerdRequest">     
     	<xs:complexType>
             <xs:sequence>
-                <xs:element name="code" type="xs:string"/>
+                <xs:element name="id" type="xs:integer"/>
+                <xs:element name="location" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    
+    <xs:element name="Response">     
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="code" type="xs:integer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+   <xs:element name="postCowToHerdRequest">     
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="id_herd" type="xs:integer"/>
+                <xs:element name="cow" type="tns:Cow"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="associateCowToHerdRequest">     
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="id_herd" type="xs:integer"/>
+                <xs:element name="id_cow" type="xs:integer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="postAnimalAlertRequest">     
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="id_animal" type="xs:integer"/>
+                <xs:element name="bcs_threshold" type="xs:integer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+        <xs:element name="postHerdAlertRequest">     
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="id_herd" type="xs:integer"/>
+                <xs:element name="bcs_threshold" type="xs:integer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="addCowRequest">     
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="cow" type="tns:Cow"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    <xs:element name="getAnimalAlertResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="alert" type="tns:AnimalAlert" maxOccurs="unbounded" minOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAnimalAlertRequest">
+    	<xs:complexType>
+            <xs:sequence>
+           
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+        <xs:element name="getHerdAlertResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="alert" type="tns:HerdAlert" maxOccurs="unbounded" minOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getHerdAlertRequest">
+    	<xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
     
 </xs:schema>

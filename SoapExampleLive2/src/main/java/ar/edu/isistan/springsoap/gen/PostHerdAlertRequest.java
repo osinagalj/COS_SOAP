@@ -8,25 +8,26 @@
 
 package ar.edu.isistan.springsoap.gen;
 
+import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para AnimalAlert complex type.
+ * <p>Clase Java para anonymous complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="AnimalAlert"&gt;
+ * &lt;complexType&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *         &lt;element name="animal_id" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
- *         &lt;element name="bcs_threshold" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="id_herd" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
+ *         &lt;element name="bcs_threshold" type="{http://www.w3.org/2001/XMLSchema}integer"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -36,64 +37,63 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AnimalAlert", propOrder = {
-    "id",
-    "animalId",
+@XmlType(name = "", propOrder = {
+    "idHerd",
     "bcsThreshold"
 })
-public class AnimalAlert {
+@XmlRootElement(name = "postHerdAlertRequest")
+public class PostHerdAlertRequest {
 
-    protected int id;
-    @XmlElement(name = "animal_id")
-    protected int animalId;
-    @XmlElement(name = "bcs_threshold")
-    protected int bcsThreshold;
+    @XmlElement(name = "id_herd", required = true)
+    protected BigInteger idHerd;
+    @XmlElement(name = "bcs_threshold", required = true)
+    protected BigInteger bcsThreshold;
 
     /**
-     * Obtiene el valor de la propiedad id.
+     * Obtiene el valor de la propiedad idHerd.
      * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
      */
-    public int getId() {
-        return id;
+    public BigInteger getIdHerd() {
+        return idHerd;
     }
 
     /**
-     * Define el valor de la propiedad id.
+     * Define el valor de la propiedad idHerd.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
      */
-    public void setId(int value) {
-        this.id = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad animalId.
-     * 
-     */
-    public int getAnimalId() {
-        return animalId;
-    }
-
-    /**
-     * Define el valor de la propiedad animalId.
-     * 
-     */
-    public void setAnimalId(int value) {
-        this.animalId = value;
+    public void setIdHerd(BigInteger value) {
+        this.idHerd = value;
     }
 
     /**
      * Obtiene el valor de la propiedad bcsThreshold.
      * 
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *     
      */
-    public int getBcsThreshold() {
+    public BigInteger getBcsThreshold() {
         return bcsThreshold;
     }
 
     /**
      * Define el valor de la propiedad bcsThreshold.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *     
      */
-    public void setBcsThreshold(int value) {
+    public void setBcsThreshold(BigInteger value) {
         this.bcsThreshold = value;
     }
 

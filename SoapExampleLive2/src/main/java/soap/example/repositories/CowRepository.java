@@ -1,5 +1,7 @@
 package soap.example.repositories;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,6 +32,24 @@ public class CowRepository {
 	
 	public CowModel findAnimal(Long id) {
 		return cows.get(id);
+	}
+	
+	public boolean addAnimal(CowModel cow) {
+		if(cows.containsKey(cow.getId())) { //return false y the operation fails
+			return false;
+		}else {
+			cows.put(cow.getId(), cow);
+			return true;
+		}
+	}
+	
+	
+	public ArrayList<CowModel> getCows(){
+		ArrayList<CowModel> cow = new ArrayList<CowModel>();
+		
+		cows.forEach((k,v) -> cow.add(v));
+		
+		return cow;
 	}
 	
 

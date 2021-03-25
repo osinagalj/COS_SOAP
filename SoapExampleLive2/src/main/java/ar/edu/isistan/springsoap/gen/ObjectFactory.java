@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.2.11 
 // Visite <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2021.03.24 a las 05:26:55 PM ART 
+// Generado el: 2021.03.25 a las 06:05:25 PM ART 
 //
 
 
@@ -93,19 +93,67 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PostAnimalResponse }
+     * Create an instance of {@link PostHerdRequest }
      * 
      */
-    public PostAnimalResponse createPostAnimalResponse() {
-        return new PostAnimalResponse();
+    public PostHerdRequest createPostHerdRequest() {
+        return new PostHerdRequest();
     }
 
     /**
-     * Create an instance of {@link CowBcs }
+     * Create an instance of {@link Response }
      * 
      */
-    public CowBcs createCowBcs() {
-        return new CowBcs();
+    public Response createResponse() {
+        return new Response();
+    }
+
+    /**
+     * Create an instance of {@link PostCowToHerdRequest }
+     * 
+     */
+    public PostCowToHerdRequest createPostCowToHerdRequest() {
+        return new PostCowToHerdRequest();
+    }
+
+    /**
+     * Create an instance of {@link AssociateCowToHerdRequest }
+     * 
+     */
+    public AssociateCowToHerdRequest createAssociateCowToHerdRequest() {
+        return new AssociateCowToHerdRequest();
+    }
+
+    /**
+     * Create an instance of {@link PostAnimalAlertRequest }
+     * 
+     */
+    public PostAnimalAlertRequest createPostAnimalAlertRequest() {
+        return new PostAnimalAlertRequest();
+    }
+
+    /**
+     * Create an instance of {@link PostHerdAlertRequest }
+     * 
+     */
+    public PostHerdAlertRequest createPostHerdAlertRequest() {
+        return new PostHerdAlertRequest();
+    }
+
+    /**
+     * Create an instance of {@link AddCowRequest }
+     * 
+     */
+    public AddCowRequest createAddCowRequest() {
+        return new AddCowRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAnimalAlertResponse }
+     * 
+     */
+    public GetAnimalAlertResponse createGetAnimalAlertResponse() {
+        return new GetAnimalAlertResponse();
     }
 
     /**
@@ -117,11 +165,43 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetAnimalAlertRequest }
+     * 
+     */
+    public GetAnimalAlertRequest createGetAnimalAlertRequest() {
+        return new GetAnimalAlertRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetHerdAlertResponse }
+     * 
+     */
+    public GetHerdAlertResponse createGetHerdAlertResponse() {
+        return new GetHerdAlertResponse();
+    }
+
+    /**
      * Create an instance of {@link HerdAlert }
      * 
      */
     public HerdAlert createHerdAlert() {
         return new HerdAlert();
+    }
+
+    /**
+     * Create an instance of {@link GetHerdAlertRequest }
+     * 
+     */
+    public GetHerdAlertRequest createGetHerdAlertRequest() {
+        return new GetHerdAlertRequest();
+    }
+
+    /**
+     * Create an instance of {@link CowBcs }
+     * 
+     */
+    public CowBcs createCowBcs() {
+        return new CowBcs();
     }
 
 }
