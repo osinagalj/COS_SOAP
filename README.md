@@ -19,10 +19,10 @@ allows you to manage the values ​​predicted by the body condition estimation
 
 # Services
 
-● An AI system enters adds a bcs of an animal (mocked).
-● A user to register an animal.
-● A user associates an animal with a herd.
-● A user gets all the information about an animal, including the last bcs.
-● A user obtains all the information of a herd, including the average bsc
-● A user sets an alert for a specific animal.
-● A user sets an alert for a specific herd.
+- An AI system enters adds a bcs of an animal (mocked).
+- A user to register an animal.
+- A user associates an animal with a herd.
+- A user gets all the information about an animal, including the last bcs.
+- A user obtains all the information of a herd, including the average bsc
+- A user sets an alert for a specific animal.
+- A user sets an alert for a specific herd.
