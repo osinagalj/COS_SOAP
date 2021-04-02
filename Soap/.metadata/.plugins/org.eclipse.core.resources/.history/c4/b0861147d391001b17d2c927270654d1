@@ -1,0 +1,40 @@
+package unicen.controller;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import unicen.service.RestService;
+
+@RestController
+@RequestMapping("/api/v0/")
+public class Controller {
+	
+	ModelMapper modelMapper = new ModelMapper();
+	
+	@Autowired
+	RestService restService;
+	
+
+	//-----------------------------------------------------------------------------------//
+	//-------------------------------- POST ---------------------------------------------//
+	//-----------------------------------------------------------------------------------//
+	@PostMapping(path = "user")
+	public ResponseEntity<Long> addCow(@RequestBody User cowDTO){
+		Cow new_cow = modelMapper.map(cowDTO, Cow.class);
+		new_cow.setHerd(restService.findHerdById(cowDTO.getHerd_id()));
+		restService.register(new_cow);
+		
+		URI location = ServletUriComponentsBuilder
+				.fromCurrentRequest()
+				.path("/{id}")
+				.buildAndExpand(new_cow.getId())
+				.toUri();
+
+		return ResponseEntity.created(location).body(new_cow.getId());
+	}	
+	
+}

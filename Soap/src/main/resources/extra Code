@@ -1,0 +1,24 @@
+	public void setCows(List<CowOutput> cows2) {
+		this.cows = cows2;
+		
+	}
+	
+    public void setAlerts(List<CowAlertOutput> alerts2) {
+    	this.alerts = alerts2;
+    }
+    
+	
+    public void setAlerts(List<HerdAlertOutput> alerts2) {
+    	this.alerts = alerts2;
+    }
+    
+        public void setHerds(List<HerdOutput> herds) {
+    	this.herds = herds;
+    }
+	
+	
+- Crear una vaca
+- Crear un rodeo
+- Asignarle un rodeo a la vaca. 
+- Crear una alerta. 
+- Poder acceder a toda la info anterior.

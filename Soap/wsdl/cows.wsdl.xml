@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.isistan.edu.ar/springsoap/gen" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.isistan.edu.ar/springsoap/gen" targetNamespace="http://www.isistan.edu.ar/springsoap/gen">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.isistan.edu.ar/springsoap/gen">
+ 
+    <!-- °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    <!-- °°°°°°°°°°°°°°°°°°°°       Output     °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    <!-- °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    
+    <xs:complexType name="Cow_output">
+    	<xs:sequence>
+    		<xs:element name="id" type="xs:long"/>
+    		<xs:element name="herd_id" type="xs:long"/>
+    		<xs:element name="electronic_id" type="xs:int"/>
+    		<xs:element name="born_date" type="xs:date"/>
+    		<xs:element maxOccurs="1" minOccurs="0" name="last_due_date" type="xs:date"/>
+    		<xs:element name="number_of_deliveries" type="xs:int"/>
+            <xs:element name="weight" type="xs:decimal"/>
+            <xs:element maxOccurs="1" minOccurs="0" name="last_bcs" type="tns:CowBcs_output"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="Herd_output">
+    	<xs:sequence>
+    		<xs:element name="id" type="xs:long"/>
+    		<xs:element name="location" type="xs:string"/>
+    		<xs:element name="average_bcs" type="xs:float"/>
+    		<xs:element maxOccurs="unbounded" minOccurs="1" name="cows" type="tns:Cow_output"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="CowBcs_output">
+    	<xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="cow_id" type="xs:int"/>
+            <xs:element name="date" type="xs:date"/>
+            <xs:element name="cc" type="xs:int"/>
+    	</xs:sequence>
+    </xs:complexType>
+    
+
+    <xs:complexType name="CowAlert_output">
+    	<xs:sequence>
+    		<xs:element name="id" type="xs:long"/>
+    		<xs:element name="cow_id" type="xs:int"/>
+    		<xs:element name="bcs_threshold_min" type="xs:int"/>
+    		<xs:element name="bcs_threshold_max" type="xs:int"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="HerdAlert_output">
+    	<xs:sequence>
+    		<xs:element name="id" type="xs:long"/>
+    		<xs:element name="herd_id" type="xs:int"/>
+    		<xs:element name="bcs_threshold_min" type="xs:int"/>
+    		<xs:element name="bcs_threshold_max" type="xs:int"/>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <!-- °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    <!-- °°°°°°°°°°°°°°°°°°°°       Inputs     °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    <!-- °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    
+    <xs:complexType name="Cow_input">
+    	<xs:sequence>
+    		<xs:element name="herd_id" type="xs:long"/>
+    		<xs:element name="electronic_id" type="xs:int"/>
+    		<xs:element name="born_date" type="xs:date"/>
+    		<xs:element maxOccurs="1" minOccurs="0" name="last_due_date" type="xs:date"/>
+    		<xs:element name="number_of_deliveries" type="xs:int"/>
+            <xs:element name="weight" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="Herd_input">
+    	<xs:sequence>
+    		<xs:element name="location" type="xs:string"/>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="CowBcs_input">
+    	<xs:sequence>
+            <xs:element name="cow_id" type="xs:long"/>
+            <xs:element name="cc" type="xs:int"/>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="CowAlert_input">
+    	<xs:sequence>
+    		<xs:element name="cow_id" type="xs:long"/>
+    		<xs:element name="bcs_threshold_min" type="xs:int"/>
+    		<xs:element name="bcs_threshold_max" type="xs:int"/>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="HerdAlert_input">
+    	<xs:sequence>
+    		<xs:element name="herd_id" type="xs:long"/>
+    		<xs:element name="bcs_threshold_min" type="xs:int"/>
+    		<xs:element name="bcs_threshold_max" type="xs:int"/>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    
+    <!-- °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    <!-- °°°°°°°°°°°°°°°°°°°°       Response && Request      °°°°°°°°°°°°°°°°°° -->
+    <!-- °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    
+    
+    
+    <xs:element name="Response">     
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="code" type="xs:integer"/>
+                <xs:element name="msg" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+   <!-- °°°°°°°°°°°°°°°°°°°°       @Post      °°°°°°°°°°°°°°°°°° -->
+   
+   <xs:element name="postCowRequest">     
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="cow" type="tns:Cow_input"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="postHerdRequest">     
+    	<xs:complexType>
+            <xs:sequence>
+				<xs:element name="herd" type="tns:Herd_input"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="postCowBcsRequest">     
+    	<xs:complexType>
+            <xs:sequence>	
+				<xs:element name="herd" type="tns:CowBcs_input"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+   
+    <xs:element name="postCowAlertRequest">     
+    	<xs:complexType>
+            <xs:sequence>	
+				<xs:element name="alert" type="tns:CowAlert_input"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="postHerdAlertRequest">     
+    	<xs:complexType>
+            <xs:sequence>
+				<xs:element name="alert" type="tns:HerdAlert_input"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+                             
+   <!-- °°°°°°°°°°°°°°°°°°°°       @Get      °°°°°°°°°°°°°°°°°° -->   
+    
+    <!-- Cow --> 
+    <xs:element name="getCowRequest">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getCowResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="cow" type="tns:Cow_output"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+
+   
+    
+    <!-- Herd --> 
+    <xs:element name="getHerdRequest">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>    
+    <xs:element name="getHerdResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="herd" type="tns:Herd_output"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- All Cows --> 
+    <xs:element name="getAllHerdsRequest">
+    	<xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getAllHerdsResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="herds" type="tns:Herd_output"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    <!-- All Cow Alerts --> 
+    <xs:element name="getAllCowAlertsRequest">
+    	<xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getAllCowAlertsResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="alerts" type="tns:CowAlert_output"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- All Herd Alerts --> 
+    <xs:element name="getAllHerdAlertsRequest">
+    	<xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getAllHerdAlertsResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="alerts" type="tns:HerdAlert_output"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="postCowRequest">
+    <wsdl:part element="tns:postCowRequest" name="postCowRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllHerdsRequest">
+    <wsdl:part element="tns:getAllHerdsRequest" name="getAllHerdsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getHerdResponse">
+    <wsdl:part element="tns:getHerdResponse" name="getHerdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postCowBcsRequest">
+    <wsdl:part element="tns:postCowBcsRequest" name="postCowBcsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCowRequest">
+    <wsdl:part element="tns:getCowRequest" name="getCowRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllHerdsResponse">
+    <wsdl:part element="tns:getAllHerdsResponse" name="getAllHerdsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Response">
+    <wsdl:part element="tns:Response" name="Response">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postHerdAlertRequest">
+    <wsdl:part element="tns:postHerdAlertRequest" name="postHerdAlertRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCowResponse">
+    <wsdl:part element="tns:getCowResponse" name="getCowResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postCowAlertRequest">
+    <wsdl:part element="tns:postCowAlertRequest" name="postCowAlertRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllHerdAlertsRequest">
+    <wsdl:part element="tns:getAllHerdAlertsRequest" name="getAllHerdAlertsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllCowAlertsRequest">
+    <wsdl:part element="tns:getAllCowAlertsRequest" name="getAllCowAlertsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllHerdAlertsResponse">
+    <wsdl:part element="tns:getAllHerdAlertsResponse" name="getAllHerdAlertsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllCowAlertsResponse">
+    <wsdl:part element="tns:getAllCowAlertsResponse" name="getAllCowAlertsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="postHerdRequest">
+    <wsdl:part element="tns:postHerdRequest" name="postHerdRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getHerdRequest">
+    <wsdl:part element="tns:getHerdRequest" name="getHerdRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CowsPort">
+    <wsdl:operation name="postCow">
+      <wsdl:input message="tns:postCowRequest" name="postCowRequest">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getAllHerds">
+      <wsdl:input message="tns:getAllHerdsRequest" name="getAllHerdsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllHerdsResponse" name="getAllHerdsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHerd">
+      <wsdl:input message="tns:getHerdRequest" name="getHerdRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getHerdResponse" name="getHerdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postCowBcs">
+      <wsdl:input message="tns:postCowBcsRequest" name="postCowBcsRequest">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getCow">
+      <wsdl:input message="tns:getCowRequest" name="getCowRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getCowResponse" name="getCowResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postHerdAlert">
+      <wsdl:input message="tns:postHerdAlertRequest" name="postHerdAlertRequest">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="postCowAlert">
+      <wsdl:input message="tns:postCowAlertRequest" name="postCowAlertRequest">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getAllHerdAlerts">
+      <wsdl:input message="tns:getAllHerdAlertsRequest" name="getAllHerdAlertsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllHerdAlertsResponse" name="getAllHerdAlertsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCowAlerts">
+      <wsdl:input message="tns:getAllCowAlertsRequest" name="getAllCowAlertsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllCowAlertsResponse" name="getAllCowAlertsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postHerd">
+      <wsdl:input message="tns:postHerdRequest" name="postHerdRequest">
+    </wsdl:input>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CowsPortSoap11" type="tns:CowsPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="postCow">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="postCowRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getAllHerds">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllHerdsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllHerdsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHerd">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getHerdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getHerdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postCowBcs">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="postCowBcsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getCow">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCowRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCowResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postHerdAlert">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="postHerdAlertRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="postCowAlert">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="postCowAlertRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getAllHerdAlerts">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllHerdAlertsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllHerdAlertsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCowAlerts">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getAllCowAlertsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllCowAlertsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="postHerd">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="postHerdRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CowsPortService">
+    <wsdl:port binding="tns:CowsPortSoap11" name="CowsPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

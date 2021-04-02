@@ -1,0 +1,5 @@
+package unicen.model;
+
+public class Cow {
+
+}

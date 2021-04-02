@@ -1,0 +1,14 @@
+package unicen.service;
+
+import java.util.List;
+
+import unicen.model.User;
+
+public interface RestService {
+	
+	//Cows
+	User register(User user);
+	List<User> findUserById(long id);
+}
+
+	

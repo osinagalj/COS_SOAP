@@ -1,0 +1,60 @@
+package unicen.controller;
+
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+
+
+import unicen.dto.request.User_request;
+import unicen.model.User;
+import unicen.service.RestService;
+
+@RestController
+@RequestMapping("/api/v0/")
+public class Controller {
+	
+	ModelMapper modelMapper = new ModelMapper();
+	
+	@Autowired
+	RestService restService;
+	
+
+	//-----------------------------------------------------------------------------------//
+	//-------------------------------- POST ---------------------------------------------//
+	//-----------------------------------------------------------------------------------//
+	@PostMapping(path = "user")
+	public ResponseEntity<Long> addCow(@RequestBody User_request user){
+		User new_user = modelMapper.map(user, User.class);
+		restService.register(new_user);
+		
+		URI location = ServletUriComponentsBuilder
+				.fromCurrentRequest()
+				.path("/{id}")
+				.buildAndExpand(new_user.getId())
+				.toUri();
+
+		return ResponseEntity.created(location).body(new_user.getId());
+	}	
+	
+
+	@GetMapping(path = "users")
+	public ResponseEntity<List<User>> getCows(){
+		List<User> users = new ArrayList<User>();
+		for(User user : restService.getAllUsers()) {
+			users.add(user);
+		}
+		return ResponseEntity.ok(users);
+	}
+	
+}

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.isistan.edu.ar/springsoap/gen"
+           targetNamespace="http://www.isistan.edu.ar/springsoap/gen" elementFormDefault="qualified">
+ 
+    <!-- °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    <!-- °°°°°°°°°°°°°°°°°°°°       Output     °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    <!-- °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    
+    <xs:complexType name="Cow_output">
+    	<xs:sequence>
+    		<xs:element name="id" type="xs:long"></xs:element>
+    		<xs:element name="herd_id" type="xs:long"></xs:element>
+    		<xs:element name="electronic_id" type="xs:int"></xs:element>
+    		<xs:element name="born_date" type="xs:date"></xs:element>
+    		<xs:element name="last_due_date" type="xs:date" maxOccurs="1" minOccurs="0"></xs:element>
+    		<xs:element name="number_of_deliveries" type="xs:int"></xs:element>
+            <xs:element name="weight" type="xs:decimal"></xs:element>
+            <xs:element name="last_bcs" type="tns:CowBcs_output" maxOccurs="1" minOccurs="0" ></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="Herd_output">
+    	<xs:sequence>
+    		<xs:element name="id" type="xs:long"></xs:element>
+    		<xs:element name="location" type="xs:string"></xs:element>
+    		<xs:element name="average_bcs" type="xs:float"></xs:element>
+    		<xs:element name="cows" type="tns:Cow_output" maxOccurs="unbounded" minOccurs="1"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="CowBcs_output">
+    	<xs:sequence>
+            <xs:element name="id" type="xs:long"></xs:element>
+            <xs:element name="cow_id" type="xs:int"></xs:element>
+            <xs:element name="date" type="xs:date"></xs:element>
+            <xs:element name="cc" type="xs:int"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+
+    <xs:complexType name="CowAlert_output">
+    	<xs:sequence>
+    		<xs:element name="id" type="xs:long"></xs:element>
+    		<xs:element name="cow_id" type="xs:int"></xs:element>
+    		<xs:element name="bcs_threshold_min" type="xs:int"></xs:element>
+    		<xs:element name="bcs_threshold_max" type="xs:int"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="HerdAlert_output">
+    	<xs:sequence>
+    		<xs:element name="id" type="xs:long"></xs:element>
+    		<xs:element name="herd_id" type="xs:int"></xs:element>
+    		<xs:element name="bcs_threshold_min" type="xs:int"></xs:element>
+    		<xs:element name="bcs_threshold_max" type="xs:int"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <!-- °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    <!-- °°°°°°°°°°°°°°°°°°°°       Inputs     °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    <!-- °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    
+    <xs:complexType name="Cow_input">
+    	<xs:sequence>
+    		<xs:element name="herd_id" type="xs:long"></xs:element>
+    		<xs:element name="electronic_id" type="xs:int"></xs:element>
+    		<xs:element name="born_date" type="xs:date"></xs:element>
+    		<xs:element name="last_due_date" type="xs:date" maxOccurs="1" minOccurs="0"></xs:element>
+    		<xs:element name="number_of_deliveries" type="xs:int"></xs:element>
+            <xs:element name="weight" type="xs:decimal"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="Herd_input">
+    	<xs:sequence>
+    		<xs:element name="location" type="xs:string"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="CowBcs_input">
+    	<xs:sequence>
+            <xs:element name="cow_id" type="xs:long"></xs:element>
+            <xs:element name="cc" type="xs:int"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="CowAlert_input">
+    	<xs:sequence>
+    		<xs:element name="cow_id" type="xs:long"></xs:element>
+    		<xs:element name="bcs_threshold_min" type="xs:int"></xs:element>
+    		<xs:element name="bcs_threshold_max" type="xs:int"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="HerdAlert_input">
+    	<xs:sequence>
+    		<xs:element name="herd_id" type="xs:long"></xs:element>
+    		<xs:element name="bcs_threshold_min" type="xs:int"></xs:element>
+    		<xs:element name="bcs_threshold_max" type="xs:int"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+    
+    
+    <!-- °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    <!-- °°°°°°°°°°°°°°°°°°°°       Response && Request      °°°°°°°°°°°°°°°°°° -->
+    <!-- °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° -->
+    
+    
+    
+    <xs:element name="Response">     
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="code" type="xs:integer"/>
+                <xs:element name="msg" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+   <!-- °°°°°°°°°°°°°°°°°°°°       @Post      °°°°°°°°°°°°°°°°°° -->
+   
+   <xs:element name="postCowRequest">     
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="cow" type="tns:Cow_input"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="postHerdRequest">     
+    	<xs:complexType>
+            <xs:sequence>
+				<xs:element name="herd" type="tns:Herd_input"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="postCowBcsRequest">     
+    	<xs:complexType>
+            <xs:sequence>	
+				<xs:element name="herd" type="tns:CowBcs_input"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+   
+    <xs:element name="postCowAlertRequest">     
+    	<xs:complexType>
+            <xs:sequence>	
+				<xs:element name="alert" type="tns:CowAlert_input"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="postHerdAlertRequest">     
+    	<xs:complexType>
+            <xs:sequence>
+				<xs:element name="alert" type="tns:HerdAlert_input"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+                             
+   <!-- °°°°°°°°°°°°°°°°°°°°       @Get      °°°°°°°°°°°°°°°°°° -->   
+    
+    <!-- Cow --> 
+    <xs:element name="getCowRequest">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getCowResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="cow" type="tns:Cow_output"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+
+   
+    
+    <!-- Herd --> 
+    <xs:element name="getHerdRequest">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>    
+    <xs:element name="getHerdResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="herd" type="tns:Herd_output"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- All Cows --> 
+    <xs:element name="getAllHerdsRequest">
+    	<xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getAllHerdsResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="herds" type="tns:Herd_output" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    <!-- All Cow Alerts --> 
+    <xs:element name="getAllCowAlertsRequest">
+    	<xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getAllCowAlertsResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="alerts" type="tns:CowAlert_output" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- All Herd Alerts --> 
+    <xs:element name="getAllHerdAlertsRequest">
+    	<xs:complexType>
+            <xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getAllHerdAlertsResponse">
+    	<xs:complexType>
+            <xs:sequence>
+                <xs:element name="alerts" type="tns:HerdAlert_output" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    
+</xs:schema>

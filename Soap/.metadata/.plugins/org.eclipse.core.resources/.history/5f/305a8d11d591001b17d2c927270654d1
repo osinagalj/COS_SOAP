@@ -1,0 +1,5 @@
+package unicen.dto.response;
+
+public class User_response {
+
+}

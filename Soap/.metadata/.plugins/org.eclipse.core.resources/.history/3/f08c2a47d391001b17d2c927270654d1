@@ -1,0 +1,36 @@
+package unicen.service;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import unicen.model.User;
+import unicen.repository.UserRepository;
+
+public class RestServiceImp implements RestService{
+	
+	@Autowired
+	UserRepository userRepository;
+	
+	@Override
+	public User register(User u) {
+		return userRepository.save(u);
+	}
+	
+	@Override
+	public List<User> findUserById(long id){
+		List<User> users = new ArrayList<User>();
+		Iterator<User> it = userRepository.findAll().iterator();
+		while (it.hasNext()) {
+			User user = it.next();
+			users.add(user);
+		}
+		return users;
+	}
+	
+	
+	
+
+}
